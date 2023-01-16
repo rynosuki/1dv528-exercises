@@ -1,0 +1,11 @@
+{
+  "name": "RottenTomatoes",
+  "version": "0.0.1",
+  "description": "Application Description",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+  }
+}
