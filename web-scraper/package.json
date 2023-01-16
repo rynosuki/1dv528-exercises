@@ -1,0 +1,11 @@
+{
+  "name": "Webscraper",
+  "version": "0.0.1",
+  "description": "Scrape calendar, cinema and restaurant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+  }
+}
