@@ -13,23 +13,23 @@ const confirmation = require("./confirmation.js");
 
 const https = require("https");
 
-// const server = https.createServer().listen(3000);
+const server = https.createServer().listen(3000);
 scrape()
 
 async function scrape() {
-  processLinks(url);
-  daysAvailable = scrapeDays.scrapeCalendar(await getData(links[0]), url);
-  showTimes = scrapeShowtimes.scrapeCinema(await getData(links[1]), daysAvailable);
-  openReservations = scrapeReservations.scrapeRestaurant(url);
+  await processLinks(url);
+  daysAvailable = await scrapeDays.scrapeCalendar(await getData(links[0]), url);
+  console.log(daysAvailable)
+  showTimes = await scrapeShowtimes.scrapeCinema(await getData(links[1]), daysAvailable);
+  openReservations = await scrapeReservations.scrapeRestaurant(url);
   console.log(
     confirmation.confirmation(daysAvailable, showTimes, openReservations)
   );
 }
 
-function processLinks(url) {
+async function processLinks(url) {
   process.stdout.write("Scraping links...");
-  getData(url).then((dataString) => {
-    console.log(dataString)
+  await getData(url).then((dataString) => {
     links = dataString.match(/https:\/\/courselab([^"]*)/g);
     process.stdout.write("OK!\n");
   });
